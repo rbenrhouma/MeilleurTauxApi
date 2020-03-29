@@ -5,23 +5,23 @@ const generator = require("generate-password");
 
 router.get("/", async (req, res) => {
   try {
-    const Devis = await Review.find();
-    res.json(reviews);
+    const allDevis = await Devis.find();
+    res.json(allDevis);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
 
-// router.get("/devis", async (req, res) => {
-//   try {
-//     //Recherche d'un devis à partir de ID
-//     const devis = await Devis.findById(req.query.id);
-//     //Envoyer le devis au client
-//     res.send(devis);
-//   } catch (err) {
-//     res.status(400).send({ message: "Error during fetching process" });
-//   }
-// });
+router.get("/devis", async (req, res) => {
+  try {
+    //Recherche d'un devis à partir de ID
+    const devis = await Devis.findById(req.query.id);
+    //Envoyer le devis au client
+    res.send(devis);
+  } catch (err) {
+    res.status(400).send({ message: "Error during fetching process" });
+  }
+});
 
 // Route de create d'un devis
 router.post("/save", async (req, res) => {
