@@ -6,13 +6,6 @@ const cors = require("cors");
 const app = express();
 app.use(bodyParser.json());
 
-app.use(
-  cors({
-    origin: "https://meilleurtauxx.netlify.com/",
-    credentials: true
-  })
-);
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/devis", {
   useNewUrlParser: true,
   useUnifiedTopology: true
