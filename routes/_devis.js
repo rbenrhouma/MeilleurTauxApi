@@ -28,10 +28,12 @@ router.get("/devis", async (req, res) => {
 router.post("/save", async (req, res) => {
   console.log("Début de save de devis");
   if (
-    req.body.typeBien &&
-    req.body.usageBien &&
+    req.body.zipCode &&
     req.body.email &&
-    req.body.total !== undefined
+    req.body.typeBien &&
+    req.body.etatBien &&
+    req.body.total !== undefined &&
+    req.body.montant !== undefined
   ) {
     //Creation d'un nouveau Devis
     const newDevis = new Devis({
@@ -43,22 +45,21 @@ router.post("/save", async (req, res) => {
         exclude: "abcdefghijklmnopqrstuvwxyz"
       }),
 
-      typeBien: req.body.typeBien,
-      usageBien: req.body.usageBien,
+      zipCode: req.body.zipCode,
       email: req.body.email,
-      total: req.body.total
-
-      // etatBien: req.body.etatBien,
-      // situationUser: req.body.situationUser,
-      // typeBienLib: req.body.typeBienLib,
-      // etatBienLib: req.body.etatBienLib,
-      // usageBienLib: req.body.usageBienLib,
-      // situationUserLib: req.body.situationUserLib,
-      // country: req.body.country,
-      // zipCode: req.body.zipCode,
-      // montant: req.body.montant,
-      // travaux: req.body.travaux,
-      // notaire: req.body.notaire,
+      typeBien: req.body.typeBien,
+      etatBien: req.body.etatBien,
+      total: req.body.total,
+      montant: req.body.montant,
+      usageBien: req.body.usageBien ? req.body.usageBien : "0",
+      situationUser: req.body.situationUser ? req.body.situationUser : "",
+      typeBienLib: req.body.typeBienLib ? req.body.typeBienLib : "",
+      etatBienLib: req.body.etatBienLib ? req.body.etatBienLib : "",
+      usageBienLib: req.body.usageBienLib ? req.body.usageBienLib : ":",
+      situationUserLib: req.body.situationUserLib
+        ? req.body.situationUserLib
+        : "",
+      notaire: req.body.notaire ? req.body.notaire : "0"
     });
     // Sauvegarde de devis + envois de mail
     try {
