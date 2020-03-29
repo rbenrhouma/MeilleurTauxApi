@@ -68,7 +68,9 @@ router.post("/save", async (req, res) => {
       res.send(newDevis);
     } catch (err) {
       console.log(err);
-      res.status(400).send({ message: "Error during saving process" });
+      res
+        .status(400)
+        .send({ message: "Error during saving process of saving devis" });
     }
   } else {
     res.status(400).send({ message: "Some parameters are missing" });
