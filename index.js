@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.all("*", (req, res) => {
   res.status(404).send("Page introuvable dans Devis ...");
 });
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Server started trop cool ...");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server started at ${port} port trop cool ...`);
 });

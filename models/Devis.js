@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 // modèle devis pour mongoose DB
 const Devis = mongoose.model("devis", {
   key: String,
-  typeBien: Number,
-  etatBien: Number,
-  usageBien: Number,
-  situationUser: Number,
+  typeBien: String,
+  etatBien: String,
+  usageBien: String,
+  situationUser: String,
   typeBienLib: String,
   etatBienLib: String,
   usageBienLib: String,

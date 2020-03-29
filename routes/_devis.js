@@ -25,41 +25,40 @@ router.get("/", async (req, res) => {
 
 // Route de create d'un devis
 router.post("/save", async (req, res) => {
-  res.send(req.fields);
-  res.send("Devis !!!");
+  console.log(req.body.typeBien);
   if (
-    req.fields.typeBien &&
-    req.fields.montant &&
-    req.fields.country &&
-    req.fields.zipCode &&
-    req.fields.email &&
-    req.fields.total !== undefined
+    req.body.typeBien &&
+    req.body.montant &&
+    req.body.country &&
+    req.body.zipCode &&
+    req.body.email &&
+    req.body.total !== undefined
   ) {
     //Creation d'un nouveau Devis
     const newDevis = new Devis({
       //Generation number alléatoire
-      // key: generator.generate({
-      //   length: 8,
-      //   numbers: true,
-      //   uppercase: false,
-      //   exclude: "abcdefghijklmnopqrstuvwxyz"
-      // }),
-      key: "XXXXX",
-      typeBien: req.fields.typeBien,
-      etatBien: req.fields.etatBien,
-      usageBien: req.fields.usageBien,
-      situationUser: req.fields.situationUser,
-      typeBienLib: req.fields.typeBienLib,
-      etatBienLib: req.fields.etatBienLib,
-      usageBienLib: req.fields.usageBienLib,
-      situationUserLib: req.fields.situationUserLib,
-      country: req.fields.country,
-      zipCode: req.fields.zipCode,
-      montant: req.fields.montant,
-      travaux: req.fields.travaux,
-      notaire: req.fields.notaire,
-      total: req.fields.total,
-      email: req.fields.email
+      key: generator.generate({
+        length: 8,
+        numbers: true,
+        uppercase: false,
+        exclude: "abcdefghijklmnopqrstuvwxyz"
+      }),
+
+      typeBien: req.body.typeBien,
+      etatBien: req.body.etatBien,
+      usageBien: req.body.usageBien,
+      situationUser: req.body.situationUser,
+      typeBienLib: req.body.typeBienLib,
+      etatBienLib: req.body.etatBienLib,
+      usageBienLib: req.body.usageBienLib,
+      situationUserLib: req.body.situationUserLib,
+      country: req.body.country,
+      zipCode: req.body.zipCode,
+      montant: req.body.montant,
+      travaux: req.body.travaux,
+      notaire: req.body.notaire,
+      total: req.body.total,
+      email: req.body.email
     });
     // Sauvegarde de devis + envois de mail
     try {
