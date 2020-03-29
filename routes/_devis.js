@@ -31,7 +31,9 @@ router.post("/save", async (req, res) => {
     req.body.zipCode &&
     req.body.email &&
     req.body.typeBien &&
-    req.body.usageBien &&
+    req.body.typeBienLib &&
+    req.body.etatBien &&
+    req.body.etatBienLib &&
     req.body.total !== undefined
   ) {
     //Creation d'un nouveau Devis
@@ -48,8 +50,8 @@ router.post("/save", async (req, res) => {
       email: req.body.email,
       typeBien: req.body.typeBien,
       typeBienLib: req.body.typeBienLib ? req.body.typeBienLib : "",
-      usageBien: req.body.usageBien,
-      usageBienLib: req.body.usageBienLib ? req.body.usageBienLib : "",
+      etatBien: req.body.etatBien,
+      etatBienLib: req.body.etatBienLib ? req.body.etatBienLib : "",
       total: req.body.total
 
       // etatBien: req.body.etatBien,
