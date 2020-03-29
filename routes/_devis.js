@@ -12,16 +12,16 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/devis", async (req, res) => {
-  try {
-    //Recherche d'un devis à partir de ID
-    const devis = await Devis.findById(req.query.id);
-    //Envoyer le devis au client
-    res.send(devis);
-  } catch (err) {
-    res.status(400).send({ message: "Error during fetching process" });
-  }
-});
+// router.get("/devis", async (req, res) => {
+//   try {
+//     //Recherche d'un devis à partir de ID
+//     const devis = await Devis.findById(req.query.id);
+//     //Envoyer le devis au client
+//     res.send(devis);
+//   } catch (err) {
+//     res.status(400).send({ message: "Error during fetching process" });
+//   }
+// });
 
 // Route de create d'un devis
 router.post("/save", async (req, res) => {
@@ -63,7 +63,6 @@ router.post("/save", async (req, res) => {
 
     try {
       await newDevis.save();
-
       // envois au client
       res.send(newDevis);
     } catch (err) {
