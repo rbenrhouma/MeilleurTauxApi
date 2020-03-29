@@ -28,9 +28,10 @@ router.get("/devis", async (req, res) => {
 router.post("/save", async (req, res) => {
   console.log("Début de save de devis");
   if (
+    req.body.zipCode &&
+    req.body.email &&
     req.body.typeBien &&
     req.body.usageBien &&
-    req.body.email &&
     req.body.total !== undefined
   ) {
     //Creation d'un nouveau Devis
@@ -43,16 +44,17 @@ router.post("/save", async (req, res) => {
         exclude: "abcdefghijklmnopqrstuvwxyz"
       }),
 
-      typeBien: req.body.typeBien,
-      usageBien: req.body.usageBien,
+      zipCode: req.body.zipCode,
       email: req.body.email,
+      typeBien: req.body.typeBien,
+      typeBienLib: req.body.typeBienLib ? req.body.typeBienLib : "",
+      usageBien: req.body.usageBien,
+      usageBienLib: req.body.usageBienLib ? req.body.usageBienLib : "",
       total: req.body.total
 
       // etatBien: req.body.etatBien,
       // situationUser: req.body.situationUser,
-      // typeBienLib: req.body.typeBienLib,
       // etatBienLib: req.body.etatBienLib,
-      // usageBienLib: req.body.usageBienLib,
       // situationUserLib: req.body.situationUserLib,
       // country: req.body.country,
       // zipCode: req.body.zipCode,
