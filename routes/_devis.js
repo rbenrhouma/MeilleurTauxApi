@@ -26,12 +26,10 @@ router.get("/devis", async (req, res) => {
 
 // Route de create d'un devis
 router.post("/save", async (req, res) => {
-  console.log(req.body.typeBien);
+  console.log("Début de save de devis");
   if (
     req.body.typeBien &&
-    req.body.montant &&
-    req.body.country &&
-    req.body.zipCode &&
+    req.body.usageBien &&
     req.body.email &&
     req.body.total !== undefined
   ) {
@@ -46,20 +44,21 @@ router.post("/save", async (req, res) => {
       }),
 
       typeBien: req.body.typeBien,
-      etatBien: req.body.etatBien,
       usageBien: req.body.usageBien,
-      situationUser: req.body.situationUser,
-      typeBienLib: req.body.typeBienLib,
-      etatBienLib: req.body.etatBienLib,
-      usageBienLib: req.body.usageBienLib,
-      situationUserLib: req.body.situationUserLib,
-      country: req.body.country,
-      zipCode: req.body.zipCode,
-      montant: req.body.montant,
-      travaux: req.body.travaux,
-      notaire: req.body.notaire,
-      total: req.body.total,
-      email: req.body.email
+      email: req.body.email,
+      total: req.body.total
+
+      // etatBien: req.body.etatBien,
+      // situationUser: req.body.situationUser,
+      // typeBienLib: req.body.typeBienLib,
+      // etatBienLib: req.body.etatBienLib,
+      // usageBienLib: req.body.usageBienLib,
+      // situationUserLib: req.body.situationUserLib,
+      // country: req.body.country,
+      // zipCode: req.body.zipCode,
+      // montant: req.body.montant,
+      // travaux: req.body.travaux,
+      // notaire: req.body.notaire,
     });
     // Sauvegarde de devis + envois de mail
     try {
