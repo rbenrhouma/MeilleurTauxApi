@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
 router.get("/devis", async (req, res) => {
   try {
     //Recherche d'un devis à partir de ID
+    console.log("get all devis");
     const devis = await Devis.findById(req.query.id);
     //Envoyer le devis au client
     res.send(devis);
