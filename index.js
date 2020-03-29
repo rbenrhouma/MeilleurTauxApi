@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(bodyParser.json());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/product-catalog", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/devis", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -22,9 +22,9 @@ app.get("/", (req, res) => {
 
 // si aucune page n'est disponible.
 app.all("*", (req, res) => {
-  res.status(404).send("Page introuvable dans products ...");
+  res.status(404).send("Page introuvable dans Devis ...");
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server started trop cool");
+  console.log("Server started trop cool ...");
 });
